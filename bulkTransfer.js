@@ -29,7 +29,7 @@ async function sendBulkTransfer() {
   try {
     const rpcUrl = await askQuestion("Masukkan RPC URL: ");
     const privateKey = await askQuestion("Masukkan Private Key: ");
-    const amount = await askQuestion("Masukkan jumlah (ETH/MATIC): ");
+    const amount = await askQuestion("Masukkan jumlah token: ");
     
     const addresses = await getAddresses();
     if (addresses.length === 0) {
@@ -41,7 +41,7 @@ async function sendBulkTransfer() {
     const wallet = new ethers.Wallet(privateKey, provider);
     const amountInWei = ethers.parseEther(amount);
 
-    console.log(`🔹 Mengirim ${amount} ETH/MATIC ke ${addresses.length} alamat...`);
+    console.log(`🔹 Mengirim ${amount} token ke ${addresses.length} alamat...`);
 
     for (const address of addresses) {
       try {
